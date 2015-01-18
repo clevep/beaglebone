@@ -1,7 +1,7 @@
 # beaglebone
-Notes an useful files I've collected while playing with my Beaglebone Black.
+Notes and useful files I've collected while playing with my Beaglebone Black.
 
-## Upgrade your image using an SD card on OSX
+## Upgrade your image using a SD card on OSX
 
 ### Links
 
