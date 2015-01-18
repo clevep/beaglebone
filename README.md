@@ -28,3 +28,9 @@ This took me roughly 30 minutes.
 Power down the BBB, insert the SD card, and power up the board while holding down the boot button (next to the Micro HDMI port).
 
 The image will now install. When the LEDs stop blinking, the image is installed (this can take ~45 mins). Reboot the board.
+
+## Get sound working
+
+### Links
+
+* http://www.debianhelp.co.uk/sound.htm
