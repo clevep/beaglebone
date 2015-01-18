@@ -23,3 +23,8 @@ Make sure the infile and outfile are set properly in the next code or you can do
 	diskutil unmount disk3
 	sudo dd if=images/BBB-eMMC-flasher-debian-7.5-2014-05-14-2gb.img of=/dev/disk3
 
+This took me roughly 30 minutes.
+
+Power down the BBB, insert the SD card, and power up the board while holding down the boot button (next to the Micro HDMI port).
+
+The image will now install. When the LEDs stop blinking, the image is installed (this can take ~45 mins). Reboot the board.
