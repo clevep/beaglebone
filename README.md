@@ -39,20 +39,77 @@ The image will now install. When the LEDs stop blinking, the image is installed 
 	2. Open preferences, add wlan0 as the wireless interface, click ok
 	3. Click refresh, connect to wifi
 3. Add user
-	* sudo adduser (username)
-	* sudo visudo
+	1. sudo adduser (username)
+	2. sudo visudo
 		* add: (username)    ALL=(ALL:ALL) ALL
-	* su (username)
-	* __From here on out, everything can be done headless.__
+	3. su (username)
+	4. __From here on out, everything can be done headless.__
 4. Create ssh keys
 	* ssh-keygen -t rsa -C "your_email@example.com"
 5. Download this repo
-	* Add public ssh key to github: https://github.com/settings/ssh
-	* git clone git@github.com:clevep/beaglebone
+	1. Add public ssh key to github: https://github.com/settings/ssh
+	2. git clone git@github.com:clevep/beaglebone
 
 
-## Get sound working
+## Get USB sound working
+
+Install packages:
+
+	sudo apt-get install libasound2 libasound2-doc alsa-base alsa-utils alsa-oss alsamixergui mpd mpc
+
+
+List sound cards:
+
+	aplay -l
+
+You should see both the on-board HDMI sound card (boo) and your USB sound card (yay).
+
+
+Test your sound card:
+
+	aplay -D hw:1,0 test.wav
+
+
+The device format is: 
+
+	hw:(soundcard),(device)
+
+
+If that works, configure it to be the default:
+
+	sudo vim /etc/asound.conf
+
+Enter:
+
+        pcm.!default {
+		type hw
+		card 1
+	}
+
+	ctl.!default {
+		type hw
+		card 1
+	}
+
+Restart alsa and test:
+
+	sudo /etc/init.d/alsa-utils restart
+	aplay test.wav
+
+Control volume using alsamixer.
+
+Test recording:
+
+	arecord -f S16_LE -Dplug:default /tmp/test-recording.wav
+
+Ctrl+C to stop recording.
+
+	aplay -f S16_LE -Dplug:default /tmp/test-recording.wav
+
 
 ### Links
 
+* https://groups.google.com/forum/#!topic/beagleboard/8uRhKoaXlvA
 * http://www.debianhelp.co.uk/sound.htm
+* http://www.alsa-project.org/main/index.php/Asoundrc
+* http://www.mythtv.org/wiki/Digital_Audio_Tutorial
