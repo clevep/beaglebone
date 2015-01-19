@@ -11,6 +11,7 @@ Notes and useful files I've collected while playing with my Beaglebone Black.
 	* [Project page](http://tukaani.org/xz/)
 	* [OSX package](http://sourceforge.net/projects/macpkg/files/XZ/5.0.7/XZ.pkg/download)
 	* To decompress an xz file: xz -d foo.xz
+4. [Ubuntu info](http://elinux.org/BeagleBoardUbuntu)
 
 ###  Image your SD card
 
@@ -28,6 +29,27 @@ This took me roughly 30 minutes.
 Power down the BBB, insert the SD card, and power up the board while holding down the boot button (next to the Micro HDMI port).
 
 The image will now install. When the LEDs stop blinking, the image is installed (this can take ~45 mins). Reboot the board.
+
+
+## First boot for your BBB
+
+1. Connect network, monitor, keyboard, and mouse.
+2. If on wireless:
+	1. Open the Wicd Network Manager
+	2. Open preferences, add wlan0 as the wireless interface, click ok
+	3. Click refresh, connect to wifi
+3. Add user
+	* sudo adduser (username)
+	* sudo visudo
+		* add: (username)    ALL=(ALL:ALL) ALL
+	* su (username)
+	* __From here on out, everything can be done headless.__
+4. Create ssh keys
+	* ssh-keygen -t rsa -C "your_email@example.com"
+5. Download this repo
+	* Add public ssh key to github: https://github.com/settings/ssh
+	* git clone git@github.com:clevep/beaglebone
+
 
 ## Get sound working
 
