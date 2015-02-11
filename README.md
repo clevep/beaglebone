@@ -55,7 +55,7 @@ The image will now install. When the LEDs stop blinking, the image is installed 
 
 Install packages:
 
-	sudo apt-get install libasound2 libasound2-doc alsa-base alsa-utils alsa-oss alsamixergui mpd mpc
+	sudo apt-get install libasound2 libasound2-doc alsa-base alsa-utils alsa-oss alsamixergui mpd mpc sox
 
 
 List sound cards:
